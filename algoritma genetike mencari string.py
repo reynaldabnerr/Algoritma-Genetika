@@ -1,7 +1,7 @@
 import random
 
 # Parameter Algoritma Genetika
-TARGET_STRING = "Reynald Abner Tananda"  # String yang ingin dicari
+TARGET_STRING = "Reynald Abner Tananda D121221072"  # String yang ingin dicari
 POPULATION_SIZE = 100           # Jumlah populasi
 MUTATION_RATE = 0.01            # Peluang mutasi
 MAX_GENERATIONS = 10000          # Batas maksimum generasi
@@ -17,16 +17,18 @@ def random_string(length):
 def fitness(individual):
     return sum(1 for i, j in zip(individual, TARGET_STRING) if i == j)
 
-# Fungsi untuk melakukan seleksi berdasarkan probabilitas fitness
+# Fungsi untuk melakukan seleksi berdasarkan turnamen seleksi
 def select(population):
-    total_fitness = sum(fitness(ind) for ind in population)
-    probabilities = [fitness(ind) / total_fitness for ind in population]
-    return random.choices(population, probabilities, k=2)
+    tournament_size = 5
+    tournament = random.sample(population, tournament_size)
+    tournament = sorted(tournament, key=fitness, reverse=True)
+    return tournament[0], tournament[1]
 
-# Fungsi crossover untuk menghasilkan keturunan baru
+# Fungsi crossover untuk menghasilkan keturunan baru (dua titik crossover)
 def crossover(parent1, parent2):
-    pivot = random.randint(0, len(TARGET_STRING) - 1)
-    child = parent1[:pivot] + parent2[pivot:]
+    pivot1 = random.randint(0, len(TARGET_STRING) - 1)
+    pivot2 = random.randint(pivot1, len(TARGET_STRING) - 1)
+    child = parent1[:pivot1] + parent2[pivot1:pivot2] + parent1[pivot2:]
     return child
 
 # Fungsi mutasi untuk memperkenalkan variasi
