@@ -49,7 +49,7 @@ def genetic_algorithm(target_string):
 
         # Jika solusi ditemukan
         if fitness(population[0], target_string) == len(target_string):
-            print(f"Solution found in generation {generation}: {population[0]}")
+            print(f"Solution found in generation {generation} : {population[0]}")
             return population[0]
 
         # Seleksi dan reproduksi
@@ -70,5 +70,5 @@ def genetic_algorithm(target_string):
 
 # Jalankan algoritma
 if __name__ == "__main__":
-    target_string = input("Enter the target string: ")
+    target_string = input("Enter the target strings : ")
     genetic_algorithm(target_string)
