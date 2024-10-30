@@ -6,7 +6,7 @@ MUTATION_RATE = 0.01            # Peluang mutasi
 MAX_GENERATIONS = 10000          # Batas maksimum generasi
 
 # Karakter yang mungkin muncul dalam solusi
-CHAR_SET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890!@#$%^&*()-_=+"
+CHAR_SET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890"
 
 # Fungsi untuk menghasilkan string acak
 def random_string(length):
